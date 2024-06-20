@@ -107,6 +107,7 @@ class TestFileStorage(unittest.TestCase):
         """test count method"""
         init_len = len(models.storage.all())
         self.assertEqual(models.storage.count(), init_len)
+        self.assertEqual(models.storage.count(None), init_len)
 
         self.assertEqual(models.storage.count(int), 0)
 
