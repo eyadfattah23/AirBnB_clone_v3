@@ -43,3 +43,8 @@ class StatusEndpointTestCase(unittest.TestCase):
             "users": users
         }
         self.assertDictEqual(response.json, stats)
+
+    def test_404(self):
+        """test not found error"""
+        response = self.client.get('/api/v1/nop')
+        self.assertDictEqual(response.json, {'error': 'Not found'})
