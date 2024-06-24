@@ -76,9 +76,13 @@ def update_state(state_id):
     if not obj:
         abort(404)
 
-    data = request.get_json()
-    if not data:
+    try:
+        data = request.get_json()
+        if not data:
+            abort(400, 'Not a JSON')
+    except Exception as e:
         abort(400, 'Not a JSON')
+
     for key, value in data.items():
         if key == 'id' or key == 'created_at' or key == 'updated_at':
             continue
