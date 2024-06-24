@@ -8,6 +8,7 @@ from models.place import Place
 from models.review import Review
 from models.state import State
 from models.user import User
+import json
 
 
 class StatusEndpointTestCase(unittest.TestCase):
@@ -48,3 +49,29 @@ class StatusEndpointTestCase(unittest.TestCase):
         """test not found error"""
         response = self.client.get('/api/v1/nop')
         self.assertDictEqual(response.json, {'error': 'Not found'})
+
+
+class StatesEndPoint(unittest.TestCase):
+    """Test cases for the /states route."""
+    @classmethod
+    def setUpClass(cls):
+        """Set up the Flask test client."""
+        app.testing = True
+        cls.client = app.test_client()
+
+    def test_states(self):
+        """test /states endpoint"""
+
+        response = self.client.get('/api/v1/states')
+        self.assertListEqual([state.to_dict()
+                             for state in storage.all(State).values()], response.json)
+
+    def test_states_id(self):
+        """test /states/<state_id> endpoint"""
+        new_obj = State(name='jajanken')
+        storage.new(new_obj)
+
+        response = self.client.get(f'/api/v1/states/{new_obj.id}')
+        self.assertDictEqual(new_obj.to_dict(), response.json)
+
+        storage.delete(new_obj)
