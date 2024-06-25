@@ -56,6 +56,9 @@ def delete_city(city_id):
 def create_city(state_id):
     '''Creates a State: POST /api/v1/states/<state_id>/cities'''
 
+    state = storage.get(State, state_id)
+    if not state:
+        abort(404)
     try:
         data = request.get_json()
         if not data:
@@ -65,7 +68,6 @@ def create_city(state_id):
             abort(400, 'Missing name')
     except Exception as e:
         abort(400, 'Not a JSON')
-
     new_obj = City(**data, state_id=state_id)
     storage.new(new_obj)
     storage.save()
