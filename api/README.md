@@ -52,3 +52,5 @@ NOTES:
 
 - https://www.restapitutorial.com/introduction
 - https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/301/flask_cheatsheet.pdf
+
+https://docs.python.org/3.4/library/hashlib.html
