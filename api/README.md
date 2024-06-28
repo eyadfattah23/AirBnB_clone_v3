@@ -54,3 +54,5 @@ NOTES:
 - https://s3.amazonaws.com/intranet-projects-files/holbertonschool-higher-level_programming+/301/flask_cheatsheet.pdf
 
 https://docs.python.org/3.4/library/hashlib.html
+
+https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
