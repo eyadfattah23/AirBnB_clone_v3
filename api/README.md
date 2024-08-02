@@ -56,3 +56,5 @@ NOTES:
 https://docs.python.org/3.4/library/hashlib.html
 
 https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
+
+https://www.youtube.com/watch?v=PNtFSVU-YTI&t=24s
